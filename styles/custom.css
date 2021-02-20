@@ -1,0 +1,23 @@
+body {
+  @apply bg-blueGray-900 p-12;
+}
+
+.navbar {
+  @apply mb-4;
+}
+
+.navbar .logo {
+  @apply text-2xl text-indigo-600 font-semibold;
+}
+
+.navbar .dai {
+  @apply text-yellow-500 font-bold;
+}
+
+.stats-bar {
+  @apply bg-cyan-600 p-4 rounded-lg;
+}
+
+.stats-bar > p {
+  @apply text-xl text-cyan-200 font-medium;
+}

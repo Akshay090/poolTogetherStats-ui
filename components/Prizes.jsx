@@ -1,8 +1,8 @@
 // components/Prizes.jsx
 
-import { useQuery } from '@apollo/react-hooks'
-import { ethers } from 'ethers'
-import gql from 'graphql-tag'
+import { useQuery } from "@apollo/react-hooks";
+import { ethers } from "ethers";
+import gql from "graphql-tag";
 
 const prizesQuery = gql`
   query {
@@ -15,60 +15,56 @@ const prizesQuery = gql`
       withdrawalAmount
     }
   }
-`
+`;
 
 export function Prizes() {
-  const { loading, error, data } = useQuery(prizesQuery)
+  const { loading, error, data } = useQuery(prizesQuery);
 
-  let result = 'Loading...'
+  let result = <div className="font-bold mt-4 text-cyan-400">...Loading</div>;
   if (error) {
-    result = `Error: ${error.message}`
+    result = `Error: ${error.message}`;
   } else if (data) {
     result = (
-      <table>
+      <table className="table-auto mt-4">
         <thead>
           <tr>
-            <td>
-              Prize Id
-            </td>
-            <td>
-              Deposit Count
-            </td>
-            <td>
-              Withdrawal Count
-            </td>
-            <td>
-              Total Deposits
-            </td>
-            <td>
-              Total Withdrawals
-            </td>
+            <td className="px-4 py-2 text-cyan-600">Prize Id</td>
+            <td className="px-4 py-2 text-cyan-600">Deposit Count</td>
+            <td className="px-4 py-2 text-cyan-600">Withdrawal Count</td>
+            <td className="px-4 py-2 text-cyan-600">Total Deposits</td>
+            <td className="px-4 py-2 text-cyan-600">Total Withdrawals</td>
           </tr>
         </thead>
         <tbody>
-          {data.poolPrizes.map(poolPrize => (
+          {data.poolPrizes.map((poolPrize) => (
             <tr key={poolPrize.id.toString()}>
-              <td>
+              <td className="border border-cyan-500 px-4 py-2 text-cyan-600 font-medium">
                 {poolPrize.drawId.toString()}
               </td>
-              <td>
+              <td className="border border-cyan-500 px-4 py-2 text-cyan-600 font-medium">
                 {poolPrize.depositCount.toString()}
               </td>
-              <td>
+              <td className="border border-cyan-500 px-4 py-2 text-cyan-600 font-medium">
                 {poolPrize.withdrawalCount.toString()}
               </td>
-              <td>
-                {ethers.utils.formatEther(poolPrize.depositAmount, {commify: true, pad: true})}
+              <td className="border border-cyan-500 px-4 py-2 text-cyan-600 font-medium">
+                {ethers.utils.formatEther(poolPrize.depositAmount, {
+                  commify: true,
+                  pad: true,
+                })}
               </td>
-              <td>
-                {ethers.utils.formatEther(poolPrize.withdrawalAmount, {commify: true, pad: true})}
+              <td className="border border-cyan-500 px-4 py-2 text-cyan-600 font-medium">
+                {ethers.utils.formatEther(poolPrize.withdrawalAmount, {
+                  commify: true,
+                  pad: true,
+                })}
               </td>
             </tr>
           ))}
         </tbody>
       </table>
-    )
+    );
   }
 
-  return result
+  return result;
 }
