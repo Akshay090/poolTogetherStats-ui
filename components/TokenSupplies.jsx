@@ -26,11 +26,11 @@ export function TokenSupplies() {
   } else if (data) {
     result = (
       <div className="stats-bar">
-        <p>
+        {/* <p>
           Pool Committed Supply:{" "}
           {ethers.utils.formatEther(data.poolCommittedSupply)}
         </p>
-        <p>Pool Open Supply: {ethers.utils.formatEther(data.poolOpenSupply)}</p>
+        <p>Pool Open Supply: {ethers.utils.formatEther(data.poolOpenSupply)}</p> */}
         <p>Dai Supply: {ethers.utils.formatEther(data.daiSupply)}</p>
         <p>
           Pool Liquidity Cap: {ethers.utils.formatEther(data.poolLiquidityCap)}
